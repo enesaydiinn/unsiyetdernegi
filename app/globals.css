@@ -1,0 +1,146 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "../vendor/shadcn-tailwind-4.13.0.css";
+
+@utility scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility scrollbar-gutter-stable {
+  scrollbar-gutter: stable;
+}
+
+:root {
+  --background: #f7fbf8;
+  --foreground: #102c2f;
+  --card: #ffffff;
+  --card-foreground: #102c2f;
+  --popover: #ffffff;
+  --popover-foreground: #102c2f;
+  --primary: #0a6b67;
+  --primary-foreground: #f8fffb;
+  --secondary: #e9f5ee;
+  --secondary-foreground: #123c3d;
+  --muted: #eaf1ee;
+  --muted-foreground: #5c706e;
+  --accent: #ffe9df;
+  --accent-foreground: #8f3f2d;
+  --destructive: #c93636;
+  --border: #d8e5df;
+  --input: #c8d9d3;
+  --ring: #25a99e;
+  --chart-1: #0a6b67;
+  --chart-2: #39a96b;
+  --chart-3: #f47752;
+  --chart-4: #245b76;
+  --chart-5: #d9a441;
+  --radius: 0.5rem;
+  --sidebar: #f4faf6;
+  --sidebar-foreground: #102c2f;
+  --sidebar-primary: #0a6b67;
+  --sidebar-primary-foreground: #f8fffb;
+  --sidebar-accent: #e9f5ee;
+  --sidebar-accent-foreground: #123c3d;
+  --sidebar-border: #d8e5df;
+  --sidebar-ring: #25a99e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #071c1d;
+    --foreground: #edf8f2;
+    --card: #0c292a;
+    --card-foreground: #edf8f2;
+    --popover: #0c292a;
+    --popover-foreground: #edf8f2;
+    --primary: #6ee7d6;
+    --primary-foreground: #073031;
+    --secondary: #153b3d;
+    --secondary-foreground: #edf8f2;
+    --muted: #153b3d;
+    --muted-foreground: #a7c0ba;
+    --accent: #683528;
+    --accent-foreground: #ffede5;
+    --destructive: #ff7474;
+    --border: #ffffff1a;
+    --input: #ffffff26;
+    --ring: #6ee7d6;
+    --chart-1: #6ee7d6;
+    --chart-2: #7ddf96;
+    --chart-3: #ff9675;
+    --chart-4: #8fd0ef;
+    --chart-5: #f6cb72;
+    --sidebar: #0c292a;
+    --sidebar-foreground: #edf8f2;
+    --sidebar-primary: #6ee7d6;
+    --sidebar-primary-foreground: #073031;
+    --sidebar-accent: #153b3d;
+    --sidebar-accent-foreground: #edf8f2;
+    --sidebar-border: #ffffff1a;
+    --sidebar-ring: #6ee7d6;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #b9eee4;
+  color: #082b2d;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
