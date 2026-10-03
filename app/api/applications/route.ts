@@ -1,5 +1,6 @@
-import { getDb } from "@/db";
-import { supportApplications } from "@/db/schema";
+import { persistSubmission } from "@/lib/submission-store";
+
+export const runtime = "nodejs";
 
 const requiredFields = [
   "fullName",
@@ -17,14 +18,6 @@ function clean(value: unknown) {
 
 function referenceCode(prefix: string) {
   return `${prefix}-${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
-}
-
-function errorMessage(error: unknown) {
-  const message = error instanceof Error ? error.message : "Beklenmeyen hata";
-  if (message.includes("no such table")) {
-    return "Kayıt veritabanı henüz hazırlanmadı. Yayın akışında migrasyonlar uygulanınca form kayıtları aktifleşir.";
-  }
-  return message;
 }
 
 export async function POST(request: Request) {
@@ -50,25 +43,26 @@ export async function POST(request: Request) {
     }
 
     const reference = referenceCode("UNS");
-    const db = getDb();
-
-    await db.insert(supportApplications).values({
-      id: crypto.randomUUID(),
-      referenceCode: reference,
-      fullName: clean(payload.fullName),
-      phone: clean(payload.phone),
-      email: clean(payload.email),
-      city: clean(payload.city),
-      ageRange: clean(payload.ageRange),
-      weddingWindow: clean(payload.weddingWindow),
-      supportTypes: supportTypes.join(", "),
-      monthlyIncome: clean(payload.monthlyIncome),
-      notes: clean(payload.notes),
-      contactPermission: true,
+    await persistSubmission({
+      kind: "support-application",
+      reference,
+      payload: {
+        fullName: clean(payload.fullName),
+        phone: clean(payload.phone),
+        email: clean(payload.email),
+        city: clean(payload.city),
+        ageRange: clean(payload.ageRange),
+        weddingWindow: clean(payload.weddingWindow),
+        supportTypes: supportTypes.join(", "),
+        monthlyIncome: clean(payload.monthlyIncome),
+        notes: clean(payload.notes),
+        contactPermission: true,
+      },
     });
 
     return Response.json({ reference }, { status: 201 });
   } catch (error) {
-    return Response.json({ error: errorMessage(error) }, { status: 500 });
+    const message = error instanceof Error ? error.message : "Beklenmeyen hata";
+    return Response.json({ error: message }, { status: 500 });
   }
 }

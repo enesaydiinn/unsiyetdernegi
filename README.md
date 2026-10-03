@@ -10,7 +10,7 @@ ve danışmanlık kaynaklarıyla buluşturan modern dernek web sitesi.
 - Resmi başvuru/kaynak bağlantıları
 - Destek başvuru formu
 - Bağışçı niyet formu
-- D1 veritabanı şeması ve form API rotaları
+- Vercel uyumlu Next.js API rotaları
 - Mobil ve masaüstü uyumlu kurumsal arayüz
 
 ## Geliştirme
@@ -23,7 +23,7 @@ npm run dev
 Yerel adres:
 
 ```text
-http://127.0.0.1:5173/
+http://127.0.0.1:3000/
 ```
 
 ## Build
@@ -32,10 +32,18 @@ http://127.0.0.1:5173/
 npm run build
 ```
 
-## D1 Migrasyonu
+## Vercel
 
-Veritabanı şeması `db/schema.ts` içinde, üretilen migrasyon ise
-`drizzle/0000_bent_mother_askani.sql` dosyasındadır.
+Vercel GitHub entegrasyonunda varsayılan ayarlar yeterlidir:
+
+- Build command: `npm run build`
+- Output directory: `.next`
+- Install command: `npm ci`
+
+Form kayıtlarını Google Apps Script, Make, Zapier veya benzeri bir webhook'a
+göndermek için Vercel ortam değişkenlerine `UNSIYET_FORM_WEBHOOK_URL` eklenir.
+Bu değişken yoksa formlar referans kodu üretir ve başvuruyu Vercel function
+loglarına yazar.
 
 ## Not
 
