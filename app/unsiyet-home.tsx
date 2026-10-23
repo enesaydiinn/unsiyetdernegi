@@ -407,7 +407,7 @@ export default function UnsiyetHome() {
   }
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,#e3f8ee_0,#f7fbf8_34%,#ffffff_70%)] text-[#102c2f]">
+    <main className="min-h-screen bg-[#f7fbf9] text-[#102c2f]">
       <header className="sticky top-0 z-40 border-b border-white/70 bg-white/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
           <a href="#anasayfa" className="flex items-center gap-3">
@@ -438,25 +438,24 @@ export default function UnsiyetHome() {
 
       <section
         id="anasayfa"
-        className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[1fr_0.9fr] lg:px-8 lg:py-12"
+        className="mx-auto grid max-w-7xl items-center gap-9 px-4 pb-4 pt-8 sm:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:gap-14 lg:px-8 lg:py-14"
       >
-        <div className="flex flex-col justify-center">
-          <Badge className="mb-5 rounded-md bg-[#e6f6ef] px-3 py-1 text-[#0a6b67]">
-            3 Ekim 2026 kaynak kontrolüyle hazırlanmış yönlendirme merkezi
-          </Badge>
-          <h1 className="max-w-3xl text-4xl font-black leading-tight tracking-normal text-[#082b2d] sm:text-5xl lg:text-6xl">
-            Evliliğe hazırlanan gençler için tek noktadan destek ağı.
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-[#4f6563]">
-            Ünsiyet Derneği; faizsiz kredi, çeyiz/eşya desteği, resmi başvuru,
-            eğitim, aile danışmanlığı ve bağışçı dayanışmasını sade bir akışta
-            bir araya getirir.
+        <div className="flex min-w-0 flex-col justify-center">
+          <p className="hero-enter text-sm font-semibold text-[#0a6b67]">
+            Ünsiyet Derneği
           </p>
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+          <h1 className="hero-enter hero-enter-delay-1 mt-4 max-w-[14ch] text-4xl font-bold leading-[1.08] text-[#082b2d] sm:text-5xl lg:max-w-[11ch] lg:text-6xl">
+            Evliliğe giden yolda doğru destek.
+          </h1>
+          <p className="hero-enter hero-enter-delay-2 mt-5 max-w-xl text-base leading-7 text-[#4f6563] sm:text-lg sm:leading-8">
+            Bir hayat kurarken her adımı tek başınıza düşünmek zorunda değilsiniz.
+            Güvenilir kurumları, destekleri ve rehberliği sizin için bir araya getiriyoruz.
+          </p>
+          <div className="hero-enter hero-enter-delay-3 mt-7 flex flex-wrap gap-3">
             <Button asChild size="lg" className="bg-[#0a6b67] text-white hover:bg-[#075b58]">
               <a href="#kurumlar">
                 <Search className="size-4" />
-                Destek bul
+                Destekleri keşfet
               </a>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-[#b8d7cf] bg-white">
@@ -466,49 +465,16 @@ export default function UnsiyetHome() {
               </a>
             </Button>
           </div>
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            {[
-              ["10+", "kurum ve kanal"],
-              ["2 form", "başvuru + bağışçı"],
-              ["4 alan", "ekonomi, eğitim, sağlık, danışmanlık"],
-            ].map(([value, label]) => (
-              <div
-                key={value}
-                className="rounded-lg border border-[#d8e5df] bg-white/85 p-4 shadow-sm"
-              >
-                <strong className="block text-2xl text-[#0a6b67]">
-                  {value}
-                </strong>
-                <span className="text-sm text-[#5c706e]">{label}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
-        <div className="relative min-h-[460px] overflow-hidden rounded-lg border border-white bg-white shadow-[0_24px_80px_rgba(10,107,103,0.18)]">
+        <div className="hero-photo relative h-[280px] overflow-hidden rounded-md bg-[#dceae1] sm:h-[380px] lg:h-[540px]">
           <img
-            src="/images/unsiyet-consultation.png"
-            alt="Ünsiyet danışmanlık görüşmesinde evlilik hazırlığı yapan çift"
-            className="h-full min-h-[460px] w-full object-cover"
+            src="/images/unsiyet-hero.jpg"
+            alt="Evlilik hazırlığındaki bir çift rehberlik görüşmesinde"
+            className="h-full w-full object-cover object-[center_40%]"
+            loading="eager"
+            fetchPriority="high"
           />
-          <div className="absolute inset-x-4 bottom-4 grid gap-3 rounded-lg border border-white/70 bg-white/90 p-4 shadow-lg backdrop-blur sm:grid-cols-2">
-            <div>
-              <p className="text-xs font-semibold uppercase text-[#0a6b67]">
-                Akıllı yönlendirme
-              </p>
-              <p className="mt-1 text-sm text-[#365351]">
-                İhtiyacı seç, uygun kurumları gör, resmi başvuruya geç.
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="grid size-11 place-items-center rounded-lg bg-[#ffe9df] text-[#b35338]">
-                <ShieldCheck className="size-5" />
-              </span>
-              <p className="text-sm font-semibold text-[#102c2f]">
-                Kaynaklı, sade, hızlı ve güven veren bir başvuru deneyimi.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
